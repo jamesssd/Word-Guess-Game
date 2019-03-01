@@ -1,0 +1,16 @@
+body {
+    background-image: url("../images/Rainier.jpg");
+    background-size:1500px auto;
+    background-repeat: no-repeat; 
+    vertical-align: auto 
+}
+
+.container {
+    text-align: left;
+    font-weight: bold;
+}
+
+.currentword {
+    text-align: center;
+    color: darkblue;    
+}
