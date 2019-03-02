@@ -16,6 +16,8 @@ var wins = 0;
 var currentWord;
 var isDone = false;
 var guessedLetterBox = document.getElementById("letterGuessed");
+var lettersInTitle = [];
+var numBlanks = 0;
 
 document.onkeyup = function(event) {
     userGuess = event.key;
@@ -25,6 +27,22 @@ document.onkeyup = function(event) {
     console.log(userGuess)
     
 }
+
+game.reset = fuction() {
+    currentWord = wordBank [Math.floor(Math.random() * wordBank.length)];
+    letterGuessed = wordBank.split(' ');
+    numGuess = maxGuess;
+    letterGuessed = maxGuess;
+
+    numBlanks = lettersInTitle.length;
+
+    letterGuessed = 0;
+    maxGuess = 10;
+    guessedLetterBox = [];
+    test=false;
+    startgame();
+}
+
 
 function setup() {
    
