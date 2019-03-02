@@ -1,6 +1,6 @@
 body {
     background-image: url("../images/Rainier.jpg");
-    background-size:1500px auto;
+    background-size:1800px auto;
     background-repeat: no-repeat; 
     vertical-align: auto 
 }
@@ -12,5 +12,5 @@ body {
 
 .currentword {
     text-align: center;
-    color: darkblue;    
+    color: rgb(5, 5, 5) 190, 240);
 }
