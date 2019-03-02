@@ -7,6 +7,9 @@ alert("Press any key to start!");
 var wordBank = ["Aberdeen", "Anacortes", "Auburn", "Bellevue", "Bellingham", "Bremerton", "Centralia", "Coulee Dam", "Coupeville", "Ellensburg", "Ephrata", "Everett", "Hoquiam", "Kelso", "Kennewick", "Longview", "Moses Lake", "Oak Harbor", "Olympia", "Pasco", "Point Roberts", "Port Angeles", "Pullman", "Puyallup", "Redmond", "Renton", "Richland", "Seattle", "Spokane", "Tacoma", "Vancouver", "Walla Walla", "Wenatchee", "Yakima"
 ];
 
+var lettersArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+
 // numver of max Guesses for the user
 var maxGuess = 10;
 var letterGuessed = [];
@@ -28,26 +31,41 @@ document.onkeyup = function(event) {
     
 }
 
-game.reset = fuction() {
-    currentWord = wordBank [Math.floor(Math.random() * wordBank.length)];
-    letterGuessed = wordBank.split(' ');
-    numGuess = maxGuess;
-    letterGuessed = maxGuess;
+function gamereset() {
+   numGuess = maxGuess;
+   pauseGame = false;
 
-    numBlanks = lettersInTitle.length;
+   currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+   console.log(currentWord)
 
-    letterGuessed = 0;
-    maxGuess = 10;
-    guessedLetterBox = [];
-    test=false;
-    startgame();
+   guessedLetterBox = [];
+   guessingWord = [];
+
+   for (var i = 0, j=currentWord.length; i < j; i++) {
+       if (wordBank[i] === " ") {
+           guessingWord.push("_")
+       }
+   }
+
+    // currentWord = wordBank [Math.floor(Math.random() * wordBank.length)];
+    // letterGuessed = wordBank.split(' ');
+    // numGuess = maxGuess;
+    // letterGuessed = maxGuess;
+
+    // numBlanks = lettersInTitle.length;
+    // alphabetArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    // letterGuessed = 0;
+    // maxGuess = 10;
+    // guessedLetterBox = [];
+    // test=false;
+    // startgame();
 }
 
 
 function setup() {
    
     currentWord = words[Math.floor(Math.random() * wordBank.legnth)];
-    currentWordArr = [];
+    currentWord = ["_"];
     for (var i = 0; i < currentWord.length; i++) {
         currentWordArr = [];
     }
