@@ -12,16 +12,18 @@ var lettersArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o',
 
 // numver of max Guesses for the user
 var maxGuess = 10;
+
 var letterGuessed = [];
 var guessingWord = [];
 var numGuess;
 var wins = 0;
 var currentWord;
 var isDone = false;
+var wordToMatch;
 var guessedLetterBox = document.getElementById("letterGuessed");
 var lettersInTitle = [];
 var numBlanks = 0;
-
+ 
 document.onkeyup = function(event) {
     userGuess = event.key;
     // userGuess = [Math.floor(Math.random() *wordBank.length)];
@@ -35,44 +37,54 @@ function gamereset() {
    numGuess = maxGuess;
    pauseGame = false;
 
-   currentWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-   console.log(currentWord)
+   wordToMatch = wordBank[Math.floor(Math.random() * wordBank.length)];
+   console.log(wordToMatch)
 
    guessedLetterBox = [];
    guessingWord = [];
 
    for (var i = 0, j=currentWord.length; i < j; i++) {
-       if (wordBank[i] === " ") {
+       if (wordToMatch[i] === " ") {
+           guessingWord.push("_")
+       } else {
            guessingWord.push("_")
        }
    }
 
-    // currentWord = wordBank [Math.floor(Math.random() * wordBank.length)];
-    // letterGuessed = wordBank.split(' ');
-    // numGuess = maxGuess;
-    // letterGuessed = maxGuess;
-
-    // numBlanks = lettersInTitle.length;
-    // alphabetArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    // letterGuessed = 0;
-    // maxGuess = 10;
-    // guessedLetterBox = [];
-    // test=false;
-    // startgame();
+    wordToMatch = wordBank [Math.floor(Math.random() * wordBank.length)];
+    letterGuessed = wordBank.split(' ');
+    numGuess = maxGuess;
+    letterGuessed = maxGuess;
+    console.log(currentWord);
+    numBlanks = lettersInTitle.length;
+    alphabetArray = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    letterGuessed = 0;
+    maxGuess = 10;
+    guessedLetterBox = [];
+    test=false;
+    startgame();
 }
 
 
 function setup() {
    
-    currentWord = words[Math.floor(Math.random() * wordBank.legnth)];
-    currentWord = ["_"];
-    for (var i = 0; i < currentWord.length; i++) {
-        currentWordArr = [];
+    function checkForLetter(letter) {
+        var foundLetter = false;
+        
+        for (var i = 0, j = wordToMatch.length; i<j; i++) {
+            if (letter === wordToMatch[i]) {
+                guessingWord[i] = letter;
+                foundLetter =true;
+
+                if (guessingWord.join("") === wordToMatch) {
+                    wins++;
+                    pauseGame = true;
+                    updateDisplay();
+                    
+                }
+            }
+        }
     }
-    numGuess = maxGuess;
-    letterGuessed = [];
-    console.log(wordBank);
-    updateScreen();
 };
 
 function updateDisplay() {
